@@ -20,3 +20,13 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Visual Studio Enterprise Subscription – MPN(600f6e2e-c92c-4f0b-b2b1-ddde973e91bb)'
+    appType: 'webAppLinux'
+    WebAppName: 'springboot19'
+    deployToSlotOrASE: true
+    ResourceGroupName: 'newrg1'
+    SlotName: 'production'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
